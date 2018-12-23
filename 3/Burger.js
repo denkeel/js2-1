@@ -1,0 +1,5 @@
+class Burger {
+    constructor() {
+        
+    }
+}

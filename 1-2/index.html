@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <div id="menu"></div>
+    <button id="delete">Reamove All</button>
+    <script src="MenuItem.js"></script>
+    <script src="Menu.js"></script>
+    <script>
+        window.onload = () => {
+            // DOM ready
+            let block = document.getElementById('menu');
+
+            let mymenu = new Menu('my', 'my', [
+                new MenuItem('/', 'Home'),
+                new MenuItem('/about', 'about'),
+                new MenuItem('/blog', 'blog'),
+                new MenuItem('/services', 'services'),
+                new SubMenu('/submenu', 'SubMenu', 'my2', 'my2', [
+                    new MenuItem('/', 'Home'),
+                    new MenuItem('/about', 'about'),
+                    new MenuItem('/blog', 'blog')
+                ])
+            ]);
+
+            block.innerHTML = mymenu.render();
+
+            document.getElementById('delete').addEventListener('click', () => mymenu.remove());
+        }
+
+    </script>
+</body>
+
+</html>
