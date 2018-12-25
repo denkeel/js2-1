@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Burger</title>
 </head>
+
 <body>
     <h3>Выберите размер:</h3>
     <div>
-        <input type="radio" name="size" id="big" checked>
+        <input type="radio" data-price="100" data-calories="40" name="size" id="big" checked>
         <label for="big">Большой.</label>
     </div>
     <div>
-        <input type="radio" name="size" id="small">
+        <input type="radio" data-price="50" data-calories="20" name="size" id="small">
         <label for="big">Маленький.</label>
     </div>
     <h3>Выберите начинку:</h3>
     <div>
-        <input type="radio" name="topping" id="cheeze" checked>
+        <input type="radio" data-price="10" data-calories="20" name="topping" id="cheeze" checked>
         <label for="cheeze">Сыр.</label>
     </div>
     <div>
-        <input type="radio" name="topping" id="salad">
+        <input type="radio" data-price="20" data-calories="5" name="topping" id="salad">
         <label for="salad">Салат.</label>
     </div>
     <div>
-        <input type="radio" name="topping" id="potato">
+        <input type="radio" data-price="15" data-calories="10" name="topping" id="potato">
         <label for="potato">Картошка.</label>
     </div>
     <h3>Дополнительно:</h3>
     <div>
-        <input type="checkbox" name="addons" id="paprika">
+        <input type="checkbox" data-price="15" data-calories="0" name="addons" id="paprika">
         <label for="paprika">Приправа.</label>
     </div>
     <div>
-        <input type="checkbox" name="addons" id="mayonaise">
+        <input type="checkbox" data-price="20" data-calories="5" name="addons" id="mayonaise">
         <label for="mayonaise">Майонез.</label>
     </div>
     <hr>
@@ -44,7 +46,21 @@
 
     <script src="Burger.js"></script>
     <script>
-        
+        window.onload = () => {
+            updateBurger();
+            document.addEventListener('click', () => {
+                updateBurger();
+            })
+        }
+
+        // Обновление бургера
+        function updateBurger() {
+            let burger = new Burger('size', 'topping', 'addons');
+            burger.summurize('qtyMoney', 'qtyCalories');
+            console.clear();
+            console.log(burger);
+        }
     </script>
 </body>
+
 </html>
